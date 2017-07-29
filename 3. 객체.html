@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+
+    <script>
+
+        var product = {
+            name: 'book1',
+            type: 'book',
+            content: ['mango', 'sugar'],
+            country: 'philipine'
+        }
+
+        var output = '';
+
+        /*
+        for(var key in product){
+            output += '-' + key + ':' + '\t' + product[key] + '\n';
+        }
+        */
+
+        //alert(output);
+
+        with (product) {
+            output += name+'\n';
+            output += type + '\n';
+        }
+
+        //alert(output);
+
+        var student = {};
+
+        var output2 = '';
+
+        student.name = 'John';
+        student.age = 13;
+        student.hobby = 'music';
+        student.hope = 'living';
+
+        student.toString = function () {
+            for (var key in student) {
+                if (key != 'toString') {
+                    output2 += key + '\t' + this[key] + '\n';
+                }
+            }
+            return output2;
+        }
+
+        //alert(student.toString());
+
+        function test3(options) {
+            options.value1 = options.value1 || 10;
+            options.value2 = options.value2 || 20;
+            options.value3 = options.value3 || 30;
+
+            alert(options.value1 + ':' + options.value2 + ':' + options.value3);
+        }
+
+        test3({
+            value1: 100,
+            value2: 200
+        })
+
+
+        
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

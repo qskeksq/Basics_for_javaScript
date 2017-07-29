@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    
+    <script>
+       
+        function Student(name, korean, math, english) {
+
+            // 이게 반드시 this 를 통해서 만들어 줘야 한다.
+            // 보통은 this 가 최상위객체인 window 를 뜻하지만 여기서는 Student 객체 영역을 뜻한다.
+
+            this.이름 = name;     // 무슨 이유인지는 모르겠으나 var 이름  = name; 해주면 undefined 임.
+            this.국어 = korean;
+            this.수학 = math;
+            this.영어 = english;
+
+            /* 이게 함수 생성 어떤 부분인지는 모르겠는데 이름 있는 함수 만드는데 다만 이름을 this 로 빼준 것 같다.
+               이것을 호출하는 곳에서 getSum 으로 변수명으로 가져오지 않고 getSum() 으로 가져오는 것을 통해 알 수 있다.
+            this.getSum = function () {
+                return this.국어 + this.수학 + this.영어;
+            }
+
+            this.getAvg = function () {
+                return this.getSum() / 4;
+            }
+
+            this.toString = function () {
+                return this.이름 + '\t' + this.getSum() + '\t' + this.getAvg();
+            }
+            */
+
+        }
+
+        // 프로토타입을 보면 왜 this 를 자꾸 써주는지 어느정도 예상할 수 있다.
+        Student.prototype.getSum = function () {
+            return this.국어 + this.수학 + this.영어;
+        }
+        Student.prototype.getAvg = function () {
+            return this.getSum() / 4;
+        }
+        Student.prototype.toString = function () {
+            return this.이름 + '\t' + this.getSum() + '\t' + this.getAvg();
+        }
+
+        var stu = new Student('홍길동', 10, 20, 30);
+
+        alert(stu.getSum());
+        alert(stu.getAvg());
+        alert(stu.toString());
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

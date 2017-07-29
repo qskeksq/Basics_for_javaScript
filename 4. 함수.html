@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    
+    <script>
+
+        var func = function () {
+            var output = prompt('숫자 입력해라', '');
+            alert(output);
+        }
+
+        //func();         // 이게 보니까 한 곳에서 오류가 생기면 다음으로 넘어가지를 않네
+        //alert(func);
+        //alert(prompt);
+
+        var func2 = function () { alert('함수2') };
+        function func3() { alert('함수3') };
+
+        //func2();        // func2; 로 호출하면 안 됨
+        //func3();
+
+        // 똑같이 호출되는데 다만 첫번째는 익명 함수를 변수에 담아서 사용한 것이고
+        // 두번째는 선언적 함수를 사용한 것이다. 익명함수를 변수에 담는 것 = 선언적 함수
+
+        
+        function func4(param) { return param * param; }
+
+        //alert(func4(5));
+
+        function sumAll() {
+            alert(typeof arguments + ':' + arguments.length);
+        }
+
+        //alert(sumAll(1, 2, 3, 4, 5, 6, 7, 8));      // 아하 생성자가 없으니 매개변수의 값도 정해져 있지 않구나
+
+        function addAll() {
+            var result = 0; // 초기화를 0으로 해주지 않으면 NaN 오류가 뜬다
+            for (var index = 0; index < arguments.length; index++) {
+                result += arguments[index];
+            }
+
+            return result;
+        }
+
+        //alert(addAll(1, 2, 3, 4, 5));
+
+        function pythagoras(width, height) {    // 물론 이렇게 따로 매개변수를 넣어줄 수도 있고, argument에서 인덱스로 꺼낼 수도 있군
+
+            function square(x) {
+                return x * x;
+            }
+
+            return Math.sqrt(square(width) + square(height));
+        }
+
+       //alert(pythagoras(3,4));
+
+        function callTenTimes(callback) {
+            for (var i = 0; i < 10; i++) {
+                callback(i);
+            }
+        }
+
+        var call = function (i) {
+            alert('함수호출 : '+i);
+        }
+
+        //alert(callTenTimes(call));  // 변수에 담아서 가져올 때는 call(); 이 아니라 call 이라는 변수로 가져와야 함
+        //alert(callTenTimes(function (i) {
+        //    alert('함수호출 : ' + i);
+        //}));
+
+        /*
+        for (var i = 0; i < 3; i++) {       // 웹브라우저 처리 함수는 마지막에 실행되기 때문에 for 문 실행되고 마지막에 i=3 인 상태로 호출된다.
+            setTimeout(function () {
+                alert(i);
+            }, 0);
+        }
+        */
+
+                                            // 이 함수는 함수 생성, 선언, 작동 방식의 이해에 도움이 많이 된다. 외워버리자
+        function interval(i) {              // 아하 이게 클로저를 활용한 것이로군. 즉, 변수가 바뀌지만 따로 지역변수로 저장해 두는 것
+            setTimeout(function () {
+                alert(i);
+            }, 0);
+        }
+
+        /*
+        for (var i = 0; i < 3; i++) {
+            interval(i);
+        }
+        */
+
+        //true || alert('실행a');
+        //false || alert('실행b');
+
+        function test(a,b,c) {              // boolean 연산자를 이용한 함수. 반드시 이 틀은 외워버리자
+            a = a || 1;
+            b = b || 2;
+            c = c || 3;
+
+            alert(a + ':' + b + ':' + c);
+        }
+
+        //test(4, 5);
+
+      
+
+        var num = Number(prompt('숫자를 입력하세요', '숫자'));
+
+        if (isNaN(num)) {
+            alert('숫자 입력하라고 했잖아');
+        } else {
+            alert(num);
+        }
+
+
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>

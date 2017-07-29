@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    
+    <script>
+
+        function Rectangle(w, h) {
+
+            var width = w;
+            var height = h;
+
+            this.getWidth = function () {
+                return width;
+            }
+
+            this.getHeight = function () {
+                return height;
+            }
+
+            this.setWidth = function(w){
+                if(w<0){
+                    throw '길이는 음수가 아니야';
+                } else {
+                    width = w;
+                }
+            }
+
+            this.setHeight = function (h) {
+                if (h < 0) {
+                    throw '높이는 음수가 아니야';
+                } else {
+                    height = h;
+                }
+            }
+
+        }
+
+        Rectangle.prototype.getArea = function () {
+            return this.getWidth() * this.getHeight();  // 자꾸 () 빼먹는 실수한다.
+        }
+
+    </script>
+    <script>
+
+        // 상속을 이렇게 하는구나
+        function Square(length) {
+            this.base = Rectangle;
+            this.base(length, length);
+        }
+
+        Square.prototype = Rectangle.prototype;
+        //Square.prototype.constructor = Square;
+
+        var rec = new Rectangle(5, 6);
+        var sq = new Square(5);
+
+        alert(rec.getArea());
+        alert(sq.getArea());
+
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>
